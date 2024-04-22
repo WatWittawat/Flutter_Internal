@@ -65,19 +65,32 @@ class _KeysState extends State<Keys> {
             label: Text('Sort ${_order == 'asc' ? 'Descending' : 'Ascending'}'),
           ),
         ),
-        Expanded(
-          child: Column(
-            children: [
-              // for (final todo in _orderedTodos) TodoItem(todo.text, todo.priority),
-              for (final todo in _orderedTodos)
-                CheckableTodoItem(
-                  key: ValueKey(todo.text),
-                  todo.text,
-                  todo.priority,
-                ),
-            ],
-          ),
+        Column(
+          children: [
+            // for (final todo in _orderedTodos) TodoItem(todo.text, todo.priority),
+            for (final todo in _orderedTodos)
+              CheckableTodoItem(
+                key: ValueKey(todo.text),
+                todo.text,
+                todo.priority,
+              ),
+          ],
         ),
+        const Row(
+          children: [
+            Row(children: [Text('Item 1')]),
+            Spacer(),
+            Text('Item 2'),
+          ],
+        ),
+        const Row(
+          children: [
+            Expanded(
+              child: Row(children: [Text('Item 1')]),
+            ),
+            Text('Item 2'),
+          ],
+        )
       ],
     );
   }
